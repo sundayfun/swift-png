@@ -5,14 +5,8 @@ let package:Package = .init(name: "swift-png",
     products:
     [
         .library(   name: "PNG",                        targets: ["PNG"]),
-        
-        .executable(name: "PNGTests",                   targets: ["PNGTests"]),
-        .executable(name: "PNGIntegrationTests",        targets: ["PNGIntegrationTests"]),
-        .executable(name: "PNGCompressionTests",        targets: ["PNGCompressionTests"]),
-        
         .executable(name: "compression-benchmark",      targets: ["PNGCompressionBenchmarks"]), 
         .executable(name: "decompression-benchmark",    targets: ["PNGDecompressionBenchmarks"]), 
-        
         .executable(name: "decode-basic",               targets: ["PNGDecodeBasic"]),
         .executable(name: "encode-basic",               targets: ["PNGEncodeBasic"]),
         .executable(name: "indexing",                   targets: ["PNGIndexing"]),
@@ -36,44 +30,7 @@ let package:Package = .init(name: "swift-png",
                 .target(name: "TerminalColors"),
                 .product(name: "CRC", package: "swift-hash"),
             ]),
-        
 
-        .executableTarget(name: "PNGTests",
-            dependencies:
-            [
-                .target(name: "PNG"),
-                .product(name: "Testing", package: "swift-hash"),
-            ],
-            path: "Tests/PNG"),
-        
-        .executableTarget(name: "PNGIntegrationTests",
-            dependencies:
-            [
-                .target(name: "PNG"),
-                .product(name: "Testing", package: "swift-hash"),
-            ],
-            path: "Tests/PNGIntegration", 
-            exclude: 
-            [
-                "PngSuite.LICENSE",
-                "PngSuite.README",
-                "Inputs/", 
-                "Outputs/",
-                "RGBA/",
-            ]),
-        
-        .executableTarget(name: "PNGCompressionTests",
-            dependencies:
-            [
-                .target(name: "PNG"),
-                .product(name: "Testing", package: "swift-hash"),
-            ],
-            path: "Tests/PNGCompression", 
-            exclude: 
-            [
-                "Baselines/", 
-                "Outputs/",
-            ]),
         
         .executableTarget(name: "PNGCompressionBenchmarks",
             dependencies:
